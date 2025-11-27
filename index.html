@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Centro de Comunicación Antigua · Cifrado César</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Boxicons para íconos estilo interfaz -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="noise-overlay"></div>
+    <main class="console">
+      <header class="console__header">
+        <div class="console__brand">
+          <i class="bx bx-radio-circle console__brand-icon"></i>
+          <span class="console__brand-title">Centro de Comunicación Antigua · C-23</span>
+        </div>
+        <div class="console__status">
+          <span class="console__status-indicator"></span>
+          <span class="console__status-text">Envío de señales codificadas</span>
+        </div>
+      </header>
+
+      <section class="console__body">
+        <section class="panel panel--intro">
+          <h1 class="panel__title">
+            <i class="bx bx-lock-alt panel__title-icon"></i>
+            Activa tu transmisión codificada
+          </h1>
+          <p class="panel__subtitle">
+            Centro de cifrado basado en <strong>Cifrado César</strong>, inspirado en
+            antiguas salas de radio. Cada letra se desplaza un número fijo de posiciones
+            en el alfabeto para proteger tu mensaje. Usa solo letras
+            <strong>A–Z</strong> sin ñ; otros símbolos se mantendrán.
+          </p>
+        </section>
+
+        <section class="panel panel--controls">
+          <div class="field-group">
+            <label for="offset" class="field__label">
+              <i class="bx bx-slider-alt"></i>
+              Desplazamiento (offset)
+            </label>
+            <div class="field__inline">
+              <input
+                type="number"
+                id="offset"
+                class="field__input"
+                min="1"
+                value="3"
+              />
+              <span class="field__hint">Número entero positivo</span>
+            </div>
+          </div>
+
+          <div class="panel__columns">
+            <div class="panel__column">
+              <h2 class="panel__subtitle">
+                <i class="bx bx-radio panel__subtitle-icon"></i>
+                Mensaje original
+              </h2>
+              <textarea
+                id="input-text"
+                class="terminal terminal--input"
+                placeholder="Escribe aquí el mensaje a cifrar o descifrar..."
+              ></textarea>
+            </div>
+
+            <div class="panel__column">
+              <h2 class="panel__subtitle">
+                <i class="bx bx-signal-4 panel__subtitle-icon"></i>
+                Transmisión resultante (César)
+              </h2>
+              <textarea
+                id="output-text"
+                class="terminal terminal--output"
+                placeholder="El resultado aparecerá aquí..."
+                readonly
+              ></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel panel--actions">
+          <div class="actions__primary">
+            <button id="encode-btn" class="btn btn--primary">
+              <i class="bx bx-play-circle"></i>
+              Enviar mensaje codificado
+            </button>
+            <button id="decode-btn" class="btn btn--secondary">
+              <i class="bx bx-revision"></i>
+              Descifrar mensaje
+            </button>
+          </div>
+          <div class="actions__secondary">
+            <button id="clear-btn" class="btn btn--ghost">
+              <i class="bx bx-trash"></i>
+              Limpiar consola
+            </button>
+          </div>
+        </section>
+
+        <section class="panel panel--morse">
+          <h2 class="panel__subtitle">
+            <i class="bx bx-broadcast panel__subtitle-icon"></i>
+            Señal complementaria en código Morse (opcional)
+          </h2>
+          <p class="panel__subtitle-text">
+            Esta sección no reemplaza al cifrado César; solo traduce la
+            <strong>transmisión resultante</strong> a puntos y rayas para simular
+            un envío clásico por telégrafo.
+          </p>
+          <textarea
+            id="morse-output"
+            class="terminal terminal--output terminal--morse"
+            placeholder="Cuando haya un resultado cifrado o descifrado, aquí verás su versión en código Morse..."
+            readonly
+          ></textarea>
+        </section>
+
+        <section class="panel panel--footer">
+          <p class="footer__line">
+            <span class="footer__label">Protocolo:</span>
+            CÉSAR · Alfabeto A–Z · Offset configurable
+          </p>
+          <p class="footer__line">
+            <span class="footer__label">Nota:</span>
+            Las letras se procesan en mayúsculas. Espacios, números y signos se
+            mantienen para preservar el ritmo de la transmisión.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <script src="cipher.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
